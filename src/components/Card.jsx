@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-// import cardBack from '../assets/cardBack.png';
+import cardBack from '../assets/cardBack.webp';
 
-const cardBack = '';
 
 export default class Card extends Component {
 
