@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+// import cardBack from '../assets/cardBack.png';
+
+const cardBack = '';
 
 export default class Card extends Component {
 
@@ -8,12 +11,14 @@ export default class Card extends Component {
     }
 
   render() {
-    const altText = `${this.props.letter}`;
-    const imgUrl = ``;
+    const {letter, isHidden} = this.props.cardInfo;
+    const imgUrl = `#`;
+    //Destructure out the letter and the isHidden property
     return (
-      <div className="cardContainer">
+      <div className="cardContainer" onClick={(e) => this.props.cardHandler(e, this.props.letter)}>
         {/* className={this.props.cardClass} */}
-        <img src={imgUrl} alt={altText} />
+        {!isHidden && <img src={imgUrl} alt={letter} />}
+        {isHidden && <img src={cardBack} />}
       </div>
     )
   }
