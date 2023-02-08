@@ -1,4 +1,4 @@
-.cardContainer{
+.cardContainer > :not(img.flipped){
     border:1px solid rgb(255, 255, 255);
     font-size: 5rem;
     display: grid;
@@ -6,13 +6,13 @@
   }
 
 .flipped{
-    rotate: z 25deg;
+    rotate: z 15deg;
     /* box-shadow: 0 0 25px 1px rgba(255, 238, 0, .8); */
     
 }
 
 .currentCard{
-    box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px 1px rgba(0, 0, 0, 1);
 }
 
 .letterHover{

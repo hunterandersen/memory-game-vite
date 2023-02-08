@@ -16,6 +16,7 @@ export default class MemoryGame extends Component {
           return {
             letter,
             isHidden: true,
+            isCurrent: false,
           };
         });
       }),
@@ -39,14 +40,33 @@ export default class MemoryGame extends Component {
       flipCount: this.state.flipCount + 1,
     });
 
+    //Flip the card visually
+    //change the state of that card to have the flipped property
+    const cardsCopy = [...this.state.cards];
+    cardsCopy[outerIndex][innerIndex] = {
+      ...cardsCopy[outerIndex][innerIndex],
+      isHidden: false,
+      isCurrent: true,
+    };
+    this.setState({
+      cards: cardsCopy,
+    });
+
     //If the flipCount is currently odd, then that means this click is making it even.
     //In other words, two cards are flipped over now.
     //So check if they match
     if (this.state.flipCount % 2 != 0) {
       //If previous card matches current card,
       if (clickedCard.letter == this.state.prevCard.letter) {
-        //Add one to player's score
+        //Remove the "isCurrent" flag from the two cards and add the "flipped" flag
+        let cardsCopy = [...this.state.cards];
+        cardsCopy[outerIndex][innerIndex].isCurrent = false;
+        cardsCopy[this.state.prevCard.outerIndex][
+          this.state.prevCard.innerIndex
+        ].isCurrent = false;
+        //Add one to player's score as well
         this.setState({
+          cards: cardsCopy,
           playerScore: this.state.playerScore + 1,
         });
         //Set cards to remain faceup and ignored???
@@ -57,13 +77,19 @@ export default class MemoryGame extends Component {
           //Find the two that didn't match and revert them back
           let cardsCopy = [...this.state.cards];
           cardsCopy[outerIndex][innerIndex].isHidden = true;
-          cardsCopy[this.state.prevCard.outerIndex][this.state.prevCard.innerIndex].isHidden = true;
-          
+          cardsCopy[outerIndex][innerIndex].isCurrent = false;
+          cardsCopy[this.state.prevCard.outerIndex][
+            this.state.prevCard.innerIndex
+          ].isHidden = true;
+          cardsCopy[this.state.prevCard.outerIndex][
+            this.state.prevCard.innerIndex
+          ].isCurrent = false;
+
           //Then update the state with that newly reverted array
           //and reset the prevCard to be empty
           this.setState({
             cards: cardsCopy,
-            prevCard: {}
+            prevCard: {},
           });
 
           this.clicksDisabled = false;
@@ -72,26 +98,26 @@ export default class MemoryGame extends Component {
     } else {
       //Store this card as the previous card for later
       console.log("New prevCard:", clickedCard);
+      //Change the clicked card to have currentCard: true
+      let cardsCopy = [...this.state.cards];
+      cardsCopy[outerIndex][innerIndex].isCurrent = true;
+      console.log(cardsCopy[outerIndex][innerIndex]);
+      /* if (this.state.prevCard.outerIndex){
+        cardsCopy[this.state.prevCard.outerIndex][
+          this.state.prevCard.innerIndex
+        ].isCurrent = false;
+      } */
+
       this.setState({
+        cards: cardsCopy,
         prevCard: {
           ...clickedCard,
           outerIndex,
           innerIndex,
         },
       });
-
     }
-    
-    //Flip the card visually
-    //change the state of that card to have the flipped property
-    const newCards = this.state.cards.slice(0);
-    newCards[outerIndex][innerIndex] = {
-      ...newCards[outerIndex][innerIndex],
-      isHidden: false,
-    };
-    this.setState({
-      cards: newCards,
-    });
+
     //Track that it was the last card flipped
     //If prevCard, then check if they match
     //If they don't match, un-flip both and reset both trackers
