@@ -16,7 +16,7 @@ export function generateShuffledCards(boardSize){
         characters[i*2] = character;
         characters[i*2+1] = character;
     }
-    console.log("Characters:", characters);
+    // console.log("Characters:", characters);
 
     //Create a 2D Array with empty arrays. 
     //Careful with .fill([]). That inserts a reference to the same array each time
@@ -29,6 +29,6 @@ export function generateShuffledCards(boardSize){
             generatedArr[i][j] = characters.splice(rand, 1)[0];
         }
     }
-    console.log("Shuffled Array", generatedArr);
+    // console.log("Shuffled Array", generatedArr);
     return generatedArr;
 }

@@ -1,9 +1,30 @@
+.cardContainer{
+    border:1px solid rgb(255, 255, 255);
+    font-size: 5rem;
+    display: grid;
+    position: relative;
+  }
+
 .flipped{
-    transform: rotateZ(25deg);
+    rotate: z 25deg;
     /* box-shadow: 0 0 25px 1px rgba(255, 238, 0, .8); */
     
 }
 
 .currentCard{
     box-shadow: 0 0 20px 1px rgba(255, 255, 255, 0.4);
+}
+
+.letterHover{
+    position:absolute;
+    top:50%;
+    left:50%;
+    translate: -50% -50%;
+    margin:0;
+
+    z-index: 1;
+
+    color:aquamarine;
+    text-shadow: 0 0 3px black;
+    /* border: 1px solid black; */
 }
