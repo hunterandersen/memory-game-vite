@@ -18,6 +18,7 @@ export default class MemoryGame extends Component {
           }
         })
       }),
+      flipCount: 0
     };
   }
 
@@ -26,8 +27,21 @@ export default class MemoryGame extends Component {
 
     //If the card is already flipped, then ignore that click
     if (!this.state.cards[outerIndex][innerIndex].isHidden){
+      console.log("Click ignored");
       return;
     }
+    //Increase the flipCount
+    this.setState({
+      flipCount: this.flipCount + 1
+    });
+
+    //If the flipCount is currently odd, then that means this click is making it even.
+      //In other words, two cards are flipped over now.
+      //So check if they match
+    if (this.flipCount % 2 != 0){
+
+    }
+
     //Flip the card visually
       //change the state of that card to have the flipped property
     const newCards = this.state.cards.slice(0);
@@ -49,6 +63,7 @@ export default class MemoryGame extends Component {
     console.log(this.state.cards);
     return (
       <>
+      <h3>Flip Count: {this.flipCount}</h3>
         {!!this.state.cards &&
           this.state.cards.map((arr, index) => {
             return (
