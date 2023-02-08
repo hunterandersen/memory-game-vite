@@ -10,7 +10,7 @@ export default class Card extends Component {
   }
 
   render() {
-    const { letter, isHidden, isCurrent } = this.props.cardInfo;
+    const { isHidden, isCurrent } = this.props.cardInfo;
     const { outerIndex, innerIndex } = this.props;
 
     let card = <></>;

@@ -7,8 +7,6 @@
 
 .flipped{
     rotate: z 15deg;
-    /* box-shadow: 0 0 25px 1px rgba(255, 238, 0, .8); */
-    
 }
 
 .currentCard{

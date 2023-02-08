@@ -124,8 +124,6 @@ export default class MemoryGame extends Component {
   }
 
   render() {
-    //console.log(this.state.cards);
-    console.log(this.state);
     return (
       <>
         <h3>Flip Count: {this.state.flipCount}</h3>
