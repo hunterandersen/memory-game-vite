@@ -3,19 +3,35 @@
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-.App{
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-inline: 2rem;
 }
 
-.cardRowContainer{
-  margin-block: 2rem;
-  display:flex;
+h1 {
+  margin-block: 1rem;
+}
+
+.cardGrid{
+  max-width: 1200px;
+  display: grid;
+  width: 100vw;
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+  grid-template-columns: repeat(8, minmax(100px, 1fr));
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.cardRowContainer {
+  margin-block: .25rem;
+  display: flex;
   justify-content: center;
-  gap:2rem;
+  gap: .5rem;
 }

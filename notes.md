@@ -1,3 +1,2 @@
-Need to get images for the front of the cards
-
-Continue game logic
+Update CSS
+Make the cards fit the screen better

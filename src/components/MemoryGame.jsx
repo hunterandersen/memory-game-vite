@@ -27,7 +27,6 @@ export default class MemoryGame extends Component {
   }
 
   cardHandler(outerIndex, innerIndex) {
-    console.log("clicked!");
     const clickedCard = this.state.cards[outerIndex][innerIndex];
 
     //If the card is already flipped, then ignore that click
@@ -64,6 +63,12 @@ export default class MemoryGame extends Component {
         cardsCopy[this.state.prevCard.outerIndex][
           this.state.prevCard.innerIndex
         ].isCurrent = false;
+        console.log(
+          "Matched Cards",
+          cardsCopy[this.state.prevCard.outerIndex][
+            this.state.prevCard.innerIndex
+          ]
+        );
         //Add one to player's score as well
         this.setState({
           cards: cardsCopy,
@@ -93,15 +98,12 @@ export default class MemoryGame extends Component {
           });
 
           this.clicksDisabled = false;
-        }, 2500);
+        }, 10000);
       }
     } else {
-      //Store this card as the previous card for later
-      console.log("New prevCard:", clickedCard);
       //Change the clicked card to have currentCard: true
       let cardsCopy = [...this.state.cards];
       cardsCopy[outerIndex][innerIndex].isCurrent = true;
-      console.log(cardsCopy[outerIndex][innerIndex]);
       /* if (this.state.prevCard.outerIndex){
         cardsCopy[this.state.prevCard.outerIndex][
           this.state.prevCard.innerIndex
@@ -124,27 +126,54 @@ export default class MemoryGame extends Component {
   }
 
   render() {
+    const renderCardsList = this.state.cards.flatMap((arr, outer) => {
+      return arr.flatMap((card, inner) => {
+        return {
+          ...card,
+          outerIndex: outer,
+          innerIndex: inner,
+        };
+      });
+    });
+    console.log("Flattened", renderCardsList);
+
+    /*
+    {!!this.state.cards &&
+      this.state.cards.map((arr, index) => {
+        return (
+          <div className="cardRowContainer" key={`cardRow-${index}`}>
+            {arr.map((cardInfo, idx) => {
+              return (
+                <Card
+                  outerIndex={index}
+                  innerIndex={idx}
+                  cardInfo={cardInfo}
+                  key={`card-${cardInfo}${index}${idx}`}
+                  cardHandler={this.cardHandler}
+                />
+              );
+            })}
+          </div>
+        );
+      })}
+    */
+
     return (
       <>
-        <h3>Flip Count: {this.state.flipCount}</h3>
-        {!!this.state.cards &&
-          this.state.cards.map((arr, index) => {
+        <h3>Turn Count: {this.state.flipCount}</h3>
+        <div className="cardGrid">
+          {renderCardsList.map((card) => {
             return (
-              <div className="cardRowContainer" key={`cardRow-${index}`}>
-                {arr.map((cardInfo, idx) => {
-                  return (
-                    <Card
-                      outerIndex={index}
-                      innerIndex={idx}
-                      cardInfo={cardInfo}
-                      key={`card-${cardInfo}${index}${idx}`}
-                      cardHandler={this.cardHandler}
-                    />
-                  );
-                })}
-              </div>
+              <Card
+                outerIndex={card.outerIndex}
+                innerIndex={card.innerIndex}
+                cardInfo={card}
+                key={`card-${card.outerIndex}${card.innerIndex}`}
+                cardHandler={this.cardHandler}
+              />
             );
           })}
+        </div>
       </>
     );
   }
