@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import { generateShuffledCards } from "../utils";
-const gridSize = 4;
+const gridSize = 6;
 
 export default class MemoryGame extends Component {
   constructor(props) {

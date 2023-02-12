@@ -4,7 +4,7 @@
  * @returns {Array} 2D Array holding randomly assorted letters
  */
 export function generateShuffledCards(boardSize){
-    if (boardSize % 2 != 0) throw Error(`Even board size expected. Intead got: ${boardSize}`);
+    if (boardSize % 2 != 0) throw Error(`Even board size expected. Instead got: ${boardSize}`);
     if (boardSize > 6) throw Error(`Board size cannot exceed 6. Recieved: ${boardSize}`);
 
     //Generate the list of letter pairs to pull from
