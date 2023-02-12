@@ -98,7 +98,7 @@ export default class MemoryGame extends Component {
           });
 
           this.clicksDisabled = false;
-        }, 10000);
+        }, 1500);
       }
     } else {
       //Change the clicked card to have currentCard: true
