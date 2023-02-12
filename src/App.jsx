@@ -1,4 +1,3 @@
-import reactLogo from './assets/react.svg'
 import './App.css'
 import MemoryGame from './components/MemoryGame'
 
