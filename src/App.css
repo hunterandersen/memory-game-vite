@@ -7,13 +7,16 @@
 .App {
   display: grid;
   grid-template-rows: auto 1fr;
-
   height: 100vh;
   height: 100svh;
 }
 
 h1 {
   margin-block: 1rem;
+}
+
+header {
+  text-align: center;
 }
 
 .cardGrid{

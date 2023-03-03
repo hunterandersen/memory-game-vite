@@ -138,32 +138,11 @@ export default class MemoryGame extends Component {
     });
     console.log("Flattened", renderCardsList);
 
-    /*
-    {!!this.state.cards &&
-      this.state.cards.map((arr, index) => {
-        return (
-          <div className="cardRowContainer" key={`cardRow-${index}`}>
-            {arr.map((cardInfo, idx) => {
-              return (
-                <Card
-                  outerIndex={index}
-                  innerIndex={idx}
-                  cardInfo={cardInfo}
-                  key={`card-${cardInfo}${index}${idx}`}
-                  cardHandler={this.cardHandler}
-                />
-              );
-            })}
-          </div>
-        );
-      })}
-    */
-
     return (
       <>
         {<header>
-          {/* <h1>Memory Game</h1>
-          <h3>Turn Count: {this.state.flipCount}</h3> */}
+          <h1>Memory Game</h1>
+          <h3>Turn Count: {this.state.flipCount}</h3>
         </header>}
         <div className="cardGrid">
           {renderCardsList.map((card) => {
