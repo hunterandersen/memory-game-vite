@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import { generateShuffledCards } from "../utils";
-const gridSize = 6;
+//Grid Size must be even since the game works with pairing cards together. Sets of 2
+const gridSize = 4;
 
 export default class MemoryGame extends Component {
   constructor(props) {
@@ -160,7 +161,10 @@ export default class MemoryGame extends Component {
 
     return (
       <>
-        <h3>Turn Count: {this.state.flipCount}</h3>
+        {<header>
+          {/* <h1>Memory Game</h1>
+          <h3>Turn Count: {this.state.flipCount}</h3> */}
+        </header>}
         <div className="cardGrid">
           {renderCardsList.map((card) => {
             return (
