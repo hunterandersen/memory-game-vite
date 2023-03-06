@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from "./Card";
 import { generateShuffledCards } from "../utils";
 const gridSize = 6;
-
+ 
 export default class MemoryGame extends Component {
   constructor(props) {
     super(props);
@@ -136,27 +136,6 @@ export default class MemoryGame extends Component {
       });
     });
     console.log("Flattened", renderCardsList);
-
-    /*
-    {!!this.state.cards &&
-      this.state.cards.map((arr, index) => {
-        return (
-          <div className="cardRowContainer" key={`cardRow-${index}`}>
-            {arr.map((cardInfo, idx) => {
-              return (
-                <Card
-                  outerIndex={index}
-                  innerIndex={idx}
-                  cardInfo={cardInfo}
-                  key={`card-${cardInfo}${index}${idx}`}
-                  cardHandler={this.cardHandler}
-                />
-              );
-            })}
-          </div>
-        );
-      })}
-    */
 
     return (
       <>
