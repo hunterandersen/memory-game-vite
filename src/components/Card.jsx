@@ -13,7 +13,7 @@ export default class Card extends Component {
     const { isHidden, isCurrent } = this.props.cardInfo;
     const { outerIndex, innerIndex } = this.props;
 
-    let card = <></>;
+    /* let card = <></>;
     if (isHidden) {
       card = <img src={cardBack} />;
     } else {
@@ -22,15 +22,18 @@ export default class Card extends Component {
       } else {
         card = <img src={this.imageSrc} className="flipped" />;
       }
-    }
+    } */
+    let cardClass = isHidden ? "" : isCurrent ? "currentCard cardFlip" : "flipped";
 
     //Destructure out the letter and the isHidden property
     return (
       <div
-        className="cardContainer"
+        className={`cardContainer ${cardClass}`}
         onClick={(e) => this.props.cardHandler(outerIndex, innerIndex)}
       >
-        {card}
+        <img src={this.imageSrc} className="card-front" />
+        {(isHidden || isCurrent) && <img src={cardBack} className="card-back"/>}
+        
       </div>
     );
   }

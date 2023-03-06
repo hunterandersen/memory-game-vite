@@ -1,7 +1,3 @@
-#root {
-  text-align: center;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -9,29 +5,27 @@
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-inline: 2rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+  height: 100svh;
 }
 
 h1 {
   margin-block: 1rem;
 }
 
+header {
+  text-align: center;
+}
+
 .cardGrid{
-  max-width: 1200px;
   display: grid;
-  width: 100vw;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fit, 154px);
+  grid-template-rows: repeat(auto-fit, 225px);
+  justify-content: center;
   /* grid-template-columns: repeat(6, minmax(100px, 1fr)); */
   gap: 1rem;
   margin: 2rem;
 }
 
-.cardRowContainer {
-  margin-block: .25rem;
-  display: flex;
-  justify-content: center;
-  gap: .5rem;
-}

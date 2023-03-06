@@ -139,7 +139,10 @@ export default class MemoryGame extends Component {
 
     return (
       <>
-        <h3>Turn Count: {this.state.flipCount}</h3>
+        {<header>
+          <h1>Memory Game</h1>
+          <h3>Turn Count: {this.state.flipCount}</h3>
+        </header>}
         <div className="cardGrid">
           {renderCardsList.map((card) => {
             return (
