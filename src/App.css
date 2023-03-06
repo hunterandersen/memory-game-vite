@@ -22,7 +22,8 @@ header {
 .cardGrid{
   display: grid;
   grid-template-columns: repeat(auto-fit, 154px);
-  grid-template-rows: repeat(auto-fit, 225px);
+  grid-template-columns: repeat(9, 154px);
+  grid-template-rows: repeat(6, 225px);
   justify-content: center;
   /* grid-template-columns: repeat(6, minmax(100px, 1fr)); */
   gap: 1rem;
