@@ -3,7 +3,16 @@
   position: relative;
   transform-style: preserve-3d;
   cursor: pointer;
+
+  width: clamp(5vw, 154px, 20vw);
 }
+/* .cardContainer::before{
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0px;
+  padding-bottom: calc(100% / 2);
+} */
 
 .cardFlip {
   animation: cardFlip 1s ease forwards;
@@ -21,13 +30,33 @@
 .card-back {
   position: absolute;
   backface-visibility: hidden;
+
+  
+  width: 100%;
+  /* max-height: calc(100% * 1.46); */
 }
+/* .card-back::before{
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0px;
+  padding-bottom: calc(100% / 2);
+} */
 
 .card-front {
   position: absolute;
   backface-visibility: visible;
   rotate: 180deg y;
+
+  width: 100%;
 }
+/* .card-front::before{
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0px;
+  padding-bottom: calc(100% / 2);
+} */
 
 .flipped{
   opacity: 50%;
